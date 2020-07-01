@@ -1,0 +1,24 @@
+div.row div {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+div.row div h1 {
+    text-align: center;
+}
+
+.button-col {
+    text-align: center;
+}
+
+.typed-text {
+    position: relative;
+}
+
+.typed-text select {
+    position: absolute;
+    right: 0%;
+    bottom: 100%;
+    width: auto;
+    padding: 1px;
+}

@@ -1,0 +1,298 @@
+@import "~bootstrap/scss/bootstrap";
+@import "node_modules/mathsass/dist/math";
+
+$arrow-down-width: 160px;
+$arrow-down-height: 30px;
+$arrow-down-boarder: 4px;
+$arrow-down-arrow-height: 13px;
+$arrow-down-p-font-size: 20px;
+
+$arrow-right-height: 50px;
+$arrow-right-width: 120px;
+
+
+$s-arrow-down-width: 160px;
+$s-arrow-down-height: 30px;
+$s-arrow-down-boarder: 4px;
+$s-arrow-down-arrow-height: 13px;
+$s-arrow-down-p-font-size: 20px;
+
+$s-arrow-right-height: 30px;
+$s-arrow-right-width: 100px;
+
+
+//calculations
+$arrow-down-x: $arrow-down-width + 0.5 * $arrow-down-boarder; //px
+$arrow-down-y: $arrow-down-arrow-height; //px
+$arrow-down-alpha: atan(2 * $arrow-down-y / $arrow-down-x) * 1rad;
+$arrow-down-a: sqrt(pow(strip-unit($arrow-down-x)/2, 2) + pow(strip-unit($arrow-down-y), 2)) * 1px;
+$arrow-down-h: $arrow-down-a * sin(2 * $arrow-down-alpha); //px
+$arrow-down-skew: rad-to-deg(2 * $arrow-down-alpha) - 90deg;
+$arrow-down-rotate: rad-to-deg($arrow-down-alpha); //deg
+$arrow-down-top: $arrow-down-height - $arrow-down-h/2 - 2 * $arrow-down-boarder; //px
+$arrow-down-left: $arrow-down-x/2 - $arrow-down-a/2 - 1.5 * $arrow-down-boarder; //px
+$arrow-down-top-boarder: $arrow-down-top + $arrow-down-boarder;
+$arrow-down-p-width: $arrow-down-width - 10px;
+$arrow-down-p-height: $arrow-down-p-font-size + 10px;
+
+$arrow-right-half-height: $arrow-right-height / 2;
+$arrow-right-p-width: $arrow-right-width - 10px;
+$arrow-right-p-height: $arrow-down-p-font-size + 10px;
+
+.arrow-right {
+  position: relative;
+}
+
+.arrow-right:focus {
+  outline:none;
+}
+
+.arrow-right p {
+  margin: 0;
+}
+
+.arrow-right:active p {
+  color: grey;
+}
+
+.arrow-right p {
+  font-size: $arrow-down-p-font-size;
+  line-height: 1;
+  position: absolute;
+  z-index: 2;
+}
+
+@media (max-width: 991px) {
+  .arrow-right {
+    width: $arrow-down-width;
+    height: $arrow-down-height;
+    border: $arrow-down-boarder solid #c2e1f5;
+    background-color: skyblue;
+    margin-bottom: $arrow-down-arrow-height;
+  }
+  .arrow-right p {
+    width: $arrow-down-p-width;
+    height: $arrow-down-p-height;
+    left: calc(50% - #{$arrow-down-p-width} / 2);
+    top: calc(50% - #{$arrow-down-p-font-size} / 2);
+  }
+  .arrow-right:before {
+    content: " ";
+    position: absolute;
+    background-color: skyblue;
+    width: $arrow-down-a;
+    height: $arrow-down-h;
+    left: $arrow-down-left;
+    top: $arrow-down-top;
+    transform: rotate($arrow-down-rotate) skew($arrow-down-skew);
+    z-index: 1;
+  }
+
+  .arrow-right:after {
+    content: '';
+    position: absolute;
+    background-color: #c2e1f5;
+    width: $arrow-down-a;
+    height: $arrow-down-h;
+    left: $arrow-down-left;
+    top: $arrow-down-top-boarder;
+    transform: rotate($arrow-down-rotate) skew($arrow-down-skew);
+    z-index: -2;
+  }
+}
+
+@media (min-width: 992px) {
+  .arrow-right {
+    width: $arrow-right-width;
+    height: $arrow-right-height;
+    background: none;
+    border: 0;
+  }
+  .arrow-right p {
+    width: $arrow-right-p-width;
+    height: $arrow-right-p-height;
+    left: calc(50% - #{$arrow-right-p-width} / 2);
+    top: calc(50% - #{$arrow-down-p-font-size});
+  }
+  .arrow-right:before {
+    background-color: skyblue;
+    transform: skew(45deg);
+    z-index: 1;
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: $arrow-right-half-height;
+    border: $arrow-down-boarder solid #c2e1f5;
+    border-bottom: none;
+  }
+
+  .arrow-right:after {
+    background-color: skyblue;
+    transform: skew(-45deg);
+    z-index: 1;
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: $arrow-right-half-height;
+    height: $arrow-right-half-height;
+    border: $arrow-down-boarder solid #c2e1f5;
+    border-top: none;
+  }
+}
+
+//calculations
+$s-arrow-down-x: $s-arrow-down-width + 0.5 * $s-arrow-down-boarder; //px
+$s-arrow-down-y: $s-arrow-down-arrow-height; //px
+$s-arrow-down-alpha: atan(2 * $s-arrow-down-y / $s-arrow-down-x) * 1rad;
+$s-arrow-down-a: sqrt(pow(strip-unit($s-arrow-down-x)/2, 2) + pow(strip-unit($s-arrow-down-y), 2)) * 1px;
+$s-arrow-down-h: $s-arrow-down-a * sin(2 * $s-arrow-down-alpha); //px
+$s-arrow-down-skew: rad-to-deg(2 * $s-arrow-down-alpha) - 90deg;
+$s-arrow-down-rotate: rad-to-deg($s-arrow-down-alpha); //deg
+$s-arrow-down-top: $s-arrow-down-height - $s-arrow-down-h/2 - 2 * $s-arrow-down-boarder; //px
+$s-arrow-down-left: $s-arrow-down-x/2 - $s-arrow-down-a/2 - 1.5 * $s-arrow-down-boarder; //px
+$s-arrow-down-top-boarder: $s-arrow-down-top + $s-arrow-down-boarder;
+$s-arrow-down-p-width: $s-arrow-down-width - 10px;
+$s-arrow-down-p-height: $s-arrow-down-p-font-size + 10px;
+
+$s-arrow-right-half-height: $s-arrow-right-height / 2;
+$s-arrow-right-p-width: $s-arrow-right-width - 10px;
+$s-arrow-right-p-height: $s-arrow-down-p-font-size;
+
+$s-arrow-up-top: $s-arrow-down-top - $s-arrow-down-height + 2 * $s-arrow-down-boarder;
+$s-arrow-up-top-boarder: $s-arrow-up-top - $s-arrow-down-boarder;
+
+$s-arrow-margin: $s-arrow-down-arrow-height + 5px;
+
+.s-arrow-right, .s-arrow-left {
+  position: relative;
+  margin: $s-arrow-margin 0 $s-arrow-margin 0;
+}
+
+.s-arrow-right:focus, .s-arrow-left:focus {
+  outline:none;
+}
+
+.s-arrow-right:active p, .s-arrow-left:active p {
+  color: grey;
+}
+
+.s-arrow-right p, .s-arrow-left p {
+  font-size: $s-arrow-down-p-font-size;
+  line-height: 1;
+  position: absolute;
+  z-index: 2;
+  margin: 0;
+}
+
+@media (max-width: 575px) {
+  .encryption-arrows div {
+    display: inline-block;
+  }
+
+  .s-arrow-right, .s-arrow-left {
+    width: $s-arrow-down-width;
+    height: $s-arrow-down-height;
+    border: $s-arrow-down-boarder solid #c2e1f5;
+    background-color: skyblue;
+  }
+  .s-arrow-right p, .s-arrow-left p {
+    width: $s-arrow-down-p-width;
+    height: $s-arrow-down-p-height;
+    left: calc(50% - #{$s-arrow-down-p-width} / 2);
+    top: calc(50% - #{$s-arrow-down-p-font-size} / 2);
+  }
+  .s-arrow-right:before, .s-arrow-left:before {
+    content: " ";
+    position: absolute;
+    background-color: skyblue;
+    width: $s-arrow-down-a;
+    height: $s-arrow-down-h;
+    left: $s-arrow-down-left;
+    transform: rotate($s-arrow-down-rotate) skew($s-arrow-down-skew);
+    z-index: 1;
+  }
+
+  .s-arrow-right:before {
+    top: $s-arrow-down-top;
+  }
+
+  .s-arrow-left:before {
+    top: $s-arrow-up-top;
+  }
+
+  .s-arrow-right:after, .s-arrow-left:after {
+    content: '';
+    position: absolute;
+    background-color: #c2e1f5;
+    width: $s-arrow-down-a;
+    height: $s-arrow-down-h;
+    left: $s-arrow-down-left;
+    transform: rotate($s-arrow-down-rotate) skew($s-arrow-down-skew);
+    z-index: -2;
+  }
+
+  .s-arrow-right:after {
+    top: $s-arrow-down-top-boarder;
+  }
+
+  .s-arrow-left:after {
+    top: $s-arrow-up-top-boarder;
+  }
+
+}
+
+@media (min-width: 576px) {
+  .s-arrow-right, .s-arrow-left {
+    width: $s-arrow-right-width;
+    height: $s-arrow-right-height;
+    background: none;
+    border: 0;
+  }
+  .s-arrow-right p, .s-arrow-left p {
+    width: $s-arrow-right-p-width;
+    height: $s-arrow-right-p-height;
+    left: calc(50% - #{$s-arrow-right-p-width} / 2);
+    top: calc(50% - #{$s-arrow-down-p-font-size} / 1.9);
+  }
+  .s-arrow-right:before, .s-arrow-left:before {
+    background-color: skyblue;
+    z-index: 1;
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: $s-arrow-right-half-height;
+    border: $s-arrow-down-boarder solid #c2e1f5;
+    border-bottom: none;
+  }
+
+  .s-arrow-right:before {
+    transform: skew(45deg);
+  }
+  .s-arrow-left:before {
+    transform: skew(-45deg);
+  }
+
+  .s-arrow-right:after, .s-arrow-left:after {
+    background-color: skyblue;
+    z-index: 1;
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: $s-arrow-right-half-height;
+    height: $s-arrow-right-half-height;
+    border: $s-arrow-down-boarder solid #c2e1f5;
+    border-top: none;
+  }
+  .s-arrow-right:after {
+    transform: skew(-45deg);
+  }
+  .s-arrow-left:after {
+    transform: skew(45deg);
+  }
+}

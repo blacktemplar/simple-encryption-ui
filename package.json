@@ -1,0 +1,41 @@
+{
+  "name": "simple-encryption-ui",
+  "version": "1.0.0",
+  "description": "Simple UI for encryption standards",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blacktemplar/simple-encryption-ui.git"
+  },
+  "keywords": [
+    "encryption",
+    "ui",
+    "aes"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/blacktemplar/simple-encryption-ui/issues"
+  },
+  "homepage": "https://github.com/blacktemplar/simple-encryption-ui#readme",
+  "devDependencies": {
+    "css-loader": "3.5.3",
+    "postcss-loader": "3.0.0",
+    "sass": "1.26.8",
+    "sass-loader": "8.0.2",
+    "style-loader": "1.2.1",
+    "webpack": "4.43.0",
+    "webpack-cli": "3.3.11",
+    "autoprefixer": "9.8.0"
+  },
+  "dependencies": {
+    "bootstrap": "4.5.0",
+    "crypto-js": "4.0.0",
+    "jquery": "3.5.1",
+    "mathsass": "0.11.0",
+    "popper.js": "1.16.1"
+  }
+}
