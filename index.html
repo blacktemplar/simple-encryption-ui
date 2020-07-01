@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Getting Started</title>
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 col-md-12">
+                <h1>Key Derivation</h1>
+                <div class="form-group">
+                    <label for="kdf">
+                        Key Derivation Function:
+                    </label>
+                    <select name="kdf" id="kdf" class="form-control">
+                        <option value="sha256">SHA-256</option>
+                    </select>
+                    <label for="password">
+                        Password:
+                    </label>
+                    <input type="password" name="password" id="password"  class="form-control"/>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-12 button-col">
+                <button name="generate-key" id="generate-key" onclick="generateKey()" class="arrow-right"><p>Generate Key</p></button>
+            </div>
+            <div class="col-lg-7 col-md-12">
+                <h1>Encryption/Decryption</h1>
+                <div class="form-group">
+                    <label for="method">
+                        Encryption Method:
+                    </label>
+                    <select name="method" id="method" class="form-control">
+                        <option value="aes">Advanced Encryption Standard (AES)</option>
+                    </select>
+                    <label for="cipher-mode">
+                        Block cipher mode:
+                    </label>
+                    <select name="cipher-mode" id="cipher-mode" class="form-control">
+                        <option value="ecb">Electronic codebook (ECB)</option>
+                    </select>
+                    <label for="padding">
+                        Padding:
+                    </label>
+                    <select name="padding" id="padding" class="form-control">
+                        <option value="pkcs7">Cryptographic Message Syntax Standard #7 (PKCS#7)</option>
+                    </select>
+                    <label for="key-type">
+                        Key:
+                    </label>
+                    <div class="typed-text">
+                        <select name="key-type" id="key-type" onchange="keyTypeChanged()" class="form-control form-control-sm">
+                            <option value="hex" selected="selected">Hex</option>
+                            <option value="base64">Base64</option>
+                            <option value="latin1">Latin1</option>
+                            <option value="utf8">UTF-8</option>
+                            <option value="utf16">UTF-16</option>
+                        </select>
+                        <textarea name="key-value" id="key-value" onChange="keyChanged()" class="form-control"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-5 col-12">
+                        <div class="form-group">
+                            <label for="decrypted-value">
+                                Raw Text:
+                            </label>
+                            <div class="typed-text">
+                                <select name="decrypted-type" id="decrypted-type" onchange="decryptedTypeChanged()" class="form-control form-control-sm">
+                                    <option value="utf8" selected="selected">UTF-8</option>
+                                </select>
+                                <textarea name="decrypted-value" id="decrypted-value" onChange="decryptedChanged()" class="form-control"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 col-12 encryption-arrows button-col">
+                        <div>
+                            <button name="encrypt" id="encrypt" onClick="encrypt()" class="s-arrow-right"><p>encrypt</p></button>
+                        </div>
+                        <div>
+                            <button name="decrypt" id="decrypt" onClick="decrypt()" class="s-arrow-left"><p>decrypt</p></button>
+                        </div>
+                    </div>
+                    <div class="col-sm-5 col-12">
+                        <div class="form-group">
+                            <label for="encrypted-value">
+                                Encrypted Text:
+                            </label>
+                            <div class="typed-text">
+                                <select name="encrypted-type" id="encrypted-type" onchange="encryptedTypeChanged()" class="form-control form-control-sm">
+                                    <option value="hex" selected="selected">Hex</option>
+                                    <option value="base64">Base64</option>
+                                    <option value="latin1">Latin1</option>
+                                    <option value="utf8">UTF-8</option>
+                                    <option value="utf16">UTF-16</option>
+                                </select>
+                                <textarea name="encrypted-value" id="encrypted-value" onchange="encryptedChanged()" class="form-control"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
