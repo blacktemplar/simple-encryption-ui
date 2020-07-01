@@ -8,6 +8,10 @@ import aes from 'crypto-js/aes.js';
 import ecb from 'crypto-js/mode-ecb';
 import pkcs7 from 'crypto-js/pad-pkcs7';
 import 'bootstrap';
+import '@fortawesome/fontawesome-free/js/fontawesome'
+import '@fortawesome/fontawesome-free/js/solid'
+import '@fortawesome/fontawesome-free/js/regular'
+import '@fortawesome/fontawesome-free/js/brands'
 import './scss/app.scss';
 
 function getSelectedValue(id) {
@@ -25,6 +29,22 @@ function deriveKey(kdf, password) {
       return sha256(password);
     default:
       return "invalid-kdf";
+  }
+}
+
+function togglePasswordHidden(event) {
+  event.preventDefault();
+  const toggle = document.getElementById("password-toggle-ico");
+  const password = document.getElementById("password");
+  console.log(password.getAttribute("type"));
+  if(password.getAttribute("type") === "text"){
+    password.setAttribute('type', 'password');
+    toggle.classList.remove( "fa-eye" );
+    toggle.classList.add( "fa-eye-slash" );
+  }else if(password.getAttribute("type") === "password"){
+    password.setAttribute('type', 'text');
+    toggle.classList.remove( "fa-eye-slash" );
+    toggle.classList.add( "fa-eye" );
   }
 }
 
@@ -110,6 +130,8 @@ document.addEventListener("DOMContentLoaded",function() {
   document.getElementById('encrypted-value').value = '';
   decrypted.currentType = getSelectedValue('decrypted-type');
   document.getElementById('decrypted-value').value = '';
+
+  document.getElementById("password-toggle-link").addEventListener("click", togglePasswordHidden);
 });
 
 window.generateKey = function() {
