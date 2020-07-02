@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded",function() {
 });
 
 window.generateKey = function() {
-  key.wordArray = deriveKey(getSelectedValue("kdf"), sha256(document.getElementById("password").value));
+  key.wordArray = deriveKey(getSelectedValue("kdf"), document.getElementById("password").value);
   key.updateDisplay();
 }
 
